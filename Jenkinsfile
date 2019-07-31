@@ -1,6 +1,8 @@
 node {
-  stage 'Checkout'
-  git 'git@github.com:hsharma1528/agrostardemoapp.git'
+  stage ("Checkout") {
+        checkout scm
+    }
+    
  
   stage 'Docker build'
   docker.build('agrostardemoapp')

@@ -1,5 +1,0 @@
-FROM centos/python-27-centos7
-WORKDIR /home
-COPY . ./
-RUN bash -c "python -m pip install requirements.txt"
-ENTRYPOINT ["python demoapp.py"]

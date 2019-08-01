@@ -41,17 +41,18 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  labels:
-    app: agrostardemo
-  name: agrostardemo-ingress
+  name: "agrostardemo-ingress"
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
+  labels:
+    app: agrostardemo-ingress
 spec:
   rules:
+  - host: ''
     http:
       paths:
       - path: /
-      backend: 
-        serviceName: agrostardemo-svc
-        servicePort: 80
+        backend:
+          serviceName: agrostardemo-svc
+          servicePort: 80

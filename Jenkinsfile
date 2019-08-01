@@ -12,7 +12,9 @@ node {
     docker.image('agrostardemoapp').push('latest')
   }
   stage ('kubectl test'){
-    sh("kubectl get namespaces")
+    container('kubectl'){
+      sh("kubectl get namespaces")      
+    }
   }
   
 }

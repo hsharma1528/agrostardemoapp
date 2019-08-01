@@ -28,7 +28,7 @@ metadata:
 spec:
   ports:
     - name: httpport
-      port: 8090
+      port: 80
       protocol: TCP
       targetPort: 80
   selector:
@@ -47,4 +47,4 @@ metadata:
 spec:
   backend:
     serviceName: agrostardemo-svc
-    servicePort: 8090
+    servicePort: 80

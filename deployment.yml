@@ -34,7 +34,7 @@ spec:
   selector:
     app: agrostardemo
   sessionAffinity: None
-  type: NodePort
+  type: ClusterIP
   
 ---
 
@@ -45,6 +45,6 @@ metadata:
     app: agrostardemo
   name: agrostardemo-ingress
 spec:
-  backend:
+  backend: 
     serviceName: agrostardemo-svc
     servicePort: 80

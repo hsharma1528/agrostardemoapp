@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: agrostardemo-dc
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: agrostardemo
+    spec:
+      containers:
+      - name: agrostardemo-ctr
+        image: >-
+          081499153638.dkr.ecr.us-east-1.amazonaws.com/agrostardemoapp:latest
+        imagePullPolicy: Always
+        ports:
+        - name: httpport
+          containerPort: 80
+ 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: agrostardemo
+  name: agrostardemo-svc
+spec:
+  ports:
+    - name: httpport
+      port: 8090
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: agrostardemo
+  sessionAffinity: None
+  type: NodePort
+  
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: agrostardemo
+  name: agrostardemo-ingress
+spec:
+  backend:
+    serviceName: agrostardemo-svc
+    servicePort: httpport

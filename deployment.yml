@@ -47,4 +47,4 @@ metadata:
 spec:
   backend:
     serviceName: agrostardemo-svc
-    servicePort: httpport
+    servicePort: 8090

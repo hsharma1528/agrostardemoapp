@@ -13,9 +13,10 @@ node {
   }
   }
   stage ('kubectl test'){
+    withKubeConfig([credentialsId: 'kubernetes-jenkins-deployer', serverUrl: 'https://19F8661A74AE5A4F0C79BD627A0FA346.gr7.us-east-1.eks.amazonaws.com']){
     
-      sh("kubectl get namespaces > ns.txt")      
-    
+      sh 'kubectl get namespaces'   
+    }
   }
   
 }
